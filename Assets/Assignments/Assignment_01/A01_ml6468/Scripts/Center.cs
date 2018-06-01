@@ -18,10 +18,10 @@ namespace ml6468
             center = transform;
             ballChild = GameObject.CreatePrimitive(PrimitiveType.Sphere).transform;
             center.name = "center";
-            ballChild.name = "ball";
+            ballChild.name = "horizontal_ball";
 
             ballChild.position = center.position + Vector3.Normalize(Vector3.forward) * distance;
-
+            ballChild.transform.parent = center.transform;
         }
 
 
