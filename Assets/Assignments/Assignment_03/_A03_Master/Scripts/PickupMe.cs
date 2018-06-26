@@ -25,7 +25,8 @@ namespace A03Examples
         // Update is called once per frame
         void Update()
         {
-            if (grabbed && (downPointer != null)) {
+            if (grabbed)
+            {
                 downPointer.DrawLine(transform.position);
             }
         }
@@ -43,8 +44,7 @@ namespace A03Examples
                 grabbed = false;
                 myRb.isKinematic = false;  //    .useGravity = true;
                 strobe.trigger = false;
-                if (downPointer != null)
-                    downPointer.DontDraw();
+                downPointer.DontDraw();
             }
             else
             {   // pick it up:
