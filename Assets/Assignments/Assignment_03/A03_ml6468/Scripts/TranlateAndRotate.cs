@@ -30,7 +30,7 @@ namespace ml6468.A03 {
 
                 }
                 if (rotate){
-                    transform.Rotate(new Vector3(Input.GetAxis("Mouse Y") * 20.0f, Input.GetAxis("Mouse X") * 20.0f, 0));
+                    transform.Rotate(new Vector3(Input.GetAxis("Mouse Y") * 20.0f, Input.GetAxis("Mouse X ") * 20.0f, 0));
 
                 }
 
