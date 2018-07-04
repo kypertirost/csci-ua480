@@ -12,7 +12,7 @@ namespace ml6468.A04{
         public float distance = 10.0f;
         RaycastHit hitInfo;
         private float time;
-        private float moveTime = 2.0f;
+        private float moveTime = 3.0f;
         private IEnumerator coroutine;
 
         private void Start()
@@ -21,32 +21,26 @@ namespace ml6468.A04{
         }
         void Update()
         {
-            
-
-            if (Physics.Raycast(transform.position, transform.forward, out hitInfo, distance))
-            {
-                Debug.Log("start coroutine");
-                coroutine = RaycastGaze();
-                StartCoroutine(coroutine);
-            } 
-
+            coroutine = RaycastGaze();
+            StartCoroutine(coroutine);
         }
 
         private IEnumerator RaycastGaze() {
-            time = 0.0f;
-            Debug.Log("hit");
-            while (time < moveTime) {
-                time += Time.deltaTime;
+            while (true) {
+                if (Physics.Raycast(transform.position, transform.forward, out hitInfo, distance))
+                {
+                    Debug.Log("start coroutine");
+                    yield return new WaitForSeconds(2);
+                    Teleport();
+                }
                 yield return null;
             }
-            Teleport();
         }
 
         private void Teleport() {
             Vector3 teleport = hitInfo.point;
             teleport.y = transform.parent.position.y;
             transform.parent.transform.position = teleport;
-            time = 0;
             StopCoroutine(coroutine);
         }
 
