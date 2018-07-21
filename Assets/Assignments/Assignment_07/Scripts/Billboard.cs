@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
-
-public class Billboard : MonoBehaviour
-{
-
-    void Update()
+namespace ml6468.A07{
+    public class Billboard : MonoBehaviour
     {
-        transform.LookAt(Camera.main.transform);
+
+        void Update()
+        {
+            transform.LookAt(Camera.main.transform);
+        }
     }
 }
