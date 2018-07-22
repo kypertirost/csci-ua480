@@ -492,7 +492,6 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1647039277712838, guid: 1e4ef4523a3c54f13af3625423ce09a4,
     type: 2}
   bulletSpawn: {fileID: 4497674928533992}
-  emptyPlayer: {fileID: 0}
 --- !u!114 &114669298426814684
 MonoBehaviour:
   m_ObjectHideFlags: 1
