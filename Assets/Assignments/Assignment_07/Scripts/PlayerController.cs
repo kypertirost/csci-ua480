@@ -6,9 +6,12 @@ namespace ml6468 {
         
         public GameObject bulletPrefab;
         public Transform bulletSpawn;
+        private const float ThresholdTime = 0.25f;
 
+        private float time;
         private void Start()
         {
+            time = 0;
             GameObject empty = new GameObject();
             transform.parent = empty.transform;
             Camera.main.transform.parent = transform.parent;
@@ -27,14 +30,18 @@ namespace ml6468 {
             Camera.main.transform.position = transformPosition;
             transform.rotation = Camera.main.transform.rotation;
 
-            //identify move or shoot
             if (Input.GetMouseButtonDown(0)) {
-                transform.parent.Translate(Vector3.zero);
                 CmdFire();
+            }
+            //identify move
+            if (Input.GetMouseButton(0)) {
+                time += Time.deltaTime;
+                if (time > ThresholdTime) {
+                    PushMove();
+                }
             } else if (Input.GetMouseButtonUp(0)) {
+                time = 0.0f;
                 ExitMove();
-            } else if (Input.GetMouseButton(0)) {
-                PushMove();
             } 
         }
 
@@ -60,7 +67,6 @@ namespace ml6468 {
         {
             GetComponent<MeshRenderer>().material.color = Color.blue;
         }
-
 
 
         private void PushMove() {
