@@ -4,7 +4,8 @@ using UnityEngine.Networking;
 namespace ml6468.A07{
     public class EnemyController : NetworkBehaviour
     {
-
+        // this script is attached to enemy prefab so that enemy can move, shoot 
+        // repeatly in a given interval.
         public GameObject bulletPrefab;
         public Transform bulletSpawn;
 

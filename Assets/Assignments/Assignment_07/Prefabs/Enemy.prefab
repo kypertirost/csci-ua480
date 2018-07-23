@@ -200,7 +200,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1223894696086358}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 5.83}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4062322624188746}
@@ -585,6 +585,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3a15ed45b0a547e8b21fc3553b6d1b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camPrefab: {fileID: 1788961024915954, guid: 24516460f8a534026a1b1c01ea9df184, type: 2}
 --- !u!114 &114970723750046182
 MonoBehaviour:
   m_ObjectHideFlags: 1

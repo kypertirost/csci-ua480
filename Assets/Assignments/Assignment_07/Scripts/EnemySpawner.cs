@@ -4,7 +4,7 @@ using UnityEngine.Networking;
 namespace ml6468.A07{
     public class EnemySpawner : NetworkBehaviour
     {
-
+        // this is attached to Enemy Spawner so that enemy can randomly spawn.
         public GameObject enemyPrefab;
         public int numberOfEnemies;
 

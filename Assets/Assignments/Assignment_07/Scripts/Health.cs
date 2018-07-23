@@ -6,7 +6,7 @@ using System.Collections;
 namespace ml6468.A07{
     public class Health : NetworkBehaviour
     {
-
+        // this is attached to player and enemy and create health bar
         public const int maxHealth = 100;
 
         public bool destroyOnDeath;

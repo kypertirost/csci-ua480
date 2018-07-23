@@ -3,19 +3,21 @@ using UnityEngine.Networking;
 
 namespace ml6468 {
     public class PlayerController : NetworkBehaviour {
-        
+        /*
+         * This is attached to player prefab. It used to bind the camera and 
+         * player, and also allow player shoots and moves.
+         */
         public GameObject bulletPrefab;
         public Transform bulletSpawn;
+        public GameObject CameraModule;
+
+        private GameObject CameraPrefab;
         private const float ThresholdTime = 0.25f;
 
         private float time;
         private void Start()
         {
             time = 0;
-            GameObject empty = new GameObject();
-            transform.parent = empty.transform;
-            Camera.main.transform.parent = transform.parent;
-            transform.forward = Camera.main.transform.forward;
         }
 
         void Update()
@@ -25,10 +27,8 @@ namespace ml6468 {
                 return;
             }
             //bind camera and player prefab
-            var transformPosition = transform.position;
-            transformPosition.y = 0.39f;
-            Camera.main.transform.position = transformPosition;
-            transform.rotation = Camera.main.transform.rotation;
+            CameraPrefab.transform.position = transform.position;
+            transform.rotation = CameraPrefab.transform.rotation;
 
             if (Input.GetMouseButtonDown(0)) {
                 CmdFire();
@@ -65,12 +65,20 @@ namespace ml6468 {
 
         public override void OnStartLocalPlayer()
         {
+            GameObject empty = new GameObject();
+            empty.name = "Combined Player";
+            transform.parent = empty.transform;
+            CameraModule.transform.parent = transform.parent;
+
+            CameraPrefab = CameraModule.transform.GetChild(0).gameObject;
+            transform.forward = CameraPrefab.transform.forward;
             GetComponent<MeshRenderer>().material.color = Color.blue;
+            transform.position = CameraPrefab.transform.position;
         }
 
 
         private void PushMove() {
-            var move = Camera.main.transform.forward * Time.deltaTime * 4.0f;
+            var move = CameraPrefab.transform.forward * Time.deltaTime * 4.0f;
             move.y = 0;
             transform.parent.Translate(move);
         }
